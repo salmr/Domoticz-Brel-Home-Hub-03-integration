@@ -68,41 +68,20 @@ Tested on:
 
 ### 1. Clone the plugin into the Domoticz plugins directory
 ```shell
-cd domoticz/plugins/### 4. Restart domoticz and enable Brel Home Hub from the hardware page
-Don't forget to enable "Allow new Hardware" in the Domoticz settings page.
-
-## Configuration
-- Optional: Enter the IP of your Brel Home Hub. If empty, teh program will scan your network and will use the first found Brel HUB.
-- Enter the KEY of your Brel Home Hub. Get the KEY by quickly tapping 5 times on "Version 1.x.x(x)" in your Brel SmartPhone app. You'll get the 16-byte KEY in a popup, which you can then copy/paste. On Android you'll have to tap next to your profile picture instead of the version-number.
-- Don't forget to let Domoticz allow new devices before you activate this plugin!
-- If you have trouble loading your pycrypto module, you can manually add an accessToken in your settings. Get it by generating it at https://www.devglan.com/online-tools/aes-encryption-decryption
-
-## Known issues
-None so far.
-
-## Usage
-Devices have to be added to the gateway as per Brel's instructions, using the official Brel app.
-
-### Blinds and curtains Position
-Domoticz sets the position of a blind as a percentage between 0 (fully open) to 100 (fully closed). You need to set the minimum/maximum posistions of the blind before using Domoticz. Please refer to the instructions from Brel on how to set the maximum positions of a blind.
-
-### Venetian blinds Tilt
-Besides the position, Domoticz can set the angle of a venetian blind in degrees. An additional device is created, where the name will end with "Tilt". For this device you can set a percentage between 0 and 100, and is converted by the plugin into degrees between 0 and 180. To open your blinds, set the angle to 50% (which translates to 90 degrees).
-
-By default this Tilt-device in Domoticz will send a 90-degrees-command when switched on, and a 0-degrees-command when switched of. Use the slider to choose a custom position.
+cd domoticz/plugins/
 git clone https://github.com/salmr/Domoticz-Brel-Home-Hub-03-integration.git Domoticz-Brel-Plugin
 ```
 
 ### 2. Update pip:
 ```shell
-  $ pip3 install -U pip
+  pip3 install -U pip
 ```
 
 ### 3. Install pycrypto
 The plugin uses the pycrypto python module ([`https://pypi.org/project/pycrypto/`](https://pypi.org/project/pycrypto/))
 
 ```shell
-  $ pip3 install pycryptodome
+  pip3 install pycryptodome
 ```
 
 #### 3.1 Let Domoticz know about the pycrypto module
@@ -113,21 +92,22 @@ In this case you will observe something starting like that in the log:
 
 To find where pycrypto is installed, in a shell:
 ```shell
-  $ pip3 show pycrypto
+  pip3 show pycrypto
 ```
 The Crypto directory should be present in the directory indicated with Location.
 
 When you have it installed, just add a symbolic link to it in Domoticz-Brel-Plugin directory with ```ln -s```.
 Example:
+
 ```shell
-  $ cd ~/domoticz/plugins/Domoticz-Brel-Plugin
-  $ ln -s /home/pi/.local/lib/python3.5/site-packages/Crypto Crypto
+  cd ~/domoticz/plugins/Domoticz-Brel-Plugin
+  ln -s /home/pi/.local/lib/python3.5/site-packages/Crypto Crypto
 ```
 
 ### 4. Restart domoticz and enable Brel Home Hub from the hardware page
 Don't forget to enable "Allow new Hardware" in the Domoticz settings page.
 
-## Configuration
+## Configuration in Domoticz
 - Optional: Enter the IP of your Brel Home Hub. If empty, teh program will scan your network and will use the first found Brel HUB.
 - Enter the KEY of your Brel Home Hub. Get the KEY by quickly tapping 5 times on "Version 1.x.x(x)" in your Brel SmartPhone app. You'll get the 16-byte KEY in a popup, which you can then copy/paste. On Android you'll have to tap next to your profile picture instead of the version-number.
 - Don't forget to let Domoticz allow new devices before you activate this plugin!
@@ -140,9 +120,7 @@ None so far.
 Devices have to be added to the gateway as per Brel's instructions, using the official Brel app.
 
 ### Blinds and curtains Position
-Domoticz sets the position of a blind as a percentage between 0 (fully open) to 100 (fully closed). You need to set the minimum/maximum posistions of the blind before using Domoticz. Please refer to the instructions from Brel on how to set the maximum positions of a blind.
+Domoticz sets the position of a blind as a percentage between 0 (fully open) to 100 (fully closed). You need to set the minimum/maximum positions of the blind before using Domoticz. Please refer to the instructions from Brel on how to set the maximum positions of a blind.
 
 ### Venetian blinds Tilt
-Besides the position, Domoticz can set the angle of a venetian blind in degrees. An additional device is created, where the name will end with "Tilt". For this device you can set a percentage between 0 and 100, and is converted by the plugin into degrees between 0 and 180. To open your blinds, set the angle to 50% (which translates to 90 degrees).
-
-By default this Tilt-device in Domoticz will send a 90-degrees-command when switched on, and a 0-degrees-command when switched of. Use the slider to choose a custom position.
+Besides the position, Domoticz can set the angle of a venetian blind in degrees. An additional device is created, where the name will end with "Angle". For this device you can set a percentage between 0 and 100, and is converted by the plugin into degrees between 0 and 180. To open your blinds, set the angle to 50% (which translates to 90 degrees).
