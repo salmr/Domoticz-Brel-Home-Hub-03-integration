@@ -85,10 +85,8 @@ The plugin uses the pycrypto python module ([`https://pypi.org/project/pycrypto/
 ```
 
 #### 3.1 Let Domoticz know about the pycrypto module
-Domoticz may not have the path to the pycrypto library in its python environment.
-In this case you will observe something starting like that in the log:
-* failed to load 'plugin.py', Python Path used was
-* Module Import failed, exception: 'ImportError'
+Domoticz may not have the path to the pycrypto library in its python environment. In this case you will observe something starting like that in the log:
+* failed to load 'plugin.py'
 
 To find where pycrypto is installed, in a shell:
 ```shell
@@ -108,7 +106,7 @@ Example:
 Don't forget to enable "Allow new Hardware" in the Domoticz settings page.
 
 ## Configuration in Domoticz
-- Optional: Enter the IP of your Brel Home Hub. If empty, teh program will scan your network and will use the first found Brel HUB.
+- Optional: Enter the IP of your Brel Home Hub. If empty, the program will scan your network and will use the first found Brel HUB.
 - Enter the KEY of your Brel Home Hub. Get the KEY by quickly tapping 5 times on "Version 1.x.x(x)" in your Brel SmartPhone app. You'll get the 16-byte KEY in a popup, which you can then copy/paste. On Android you'll have to tap next to your profile picture instead of the version-number.
 - Don't forget to let Domoticz allow new devices before you activate this plugin!
 - If you have trouble loading your pycrypto module, you can manually add an accessToken in your settings. Get it by generating it at https://www.devglan.com/online-tools/aes-encryption-decryption
